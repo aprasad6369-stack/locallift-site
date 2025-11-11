@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LocalLift — Jobs with Dignity</title>
+  <meta name="description" content="A local job‑matching platform connecting compassionate employers with people experiencing homelessness." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;          /* slate-900 */
+      --panel: #111827;       /* gray-900 */
+      --muted: #9ca3af;       /* gray-400 */
+      --text: #e5e7eb;        /* gray-200 */
+      --brand: #22c55e;       /* green-500 */
+      --brand-600: #16a34a;   /* green-600 */
+      --accent: #38bdf8;      /* sky-400 */
+      --ring: rgba(56,189,248,.4);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text); background: radial-gradient(1200px 800px at 80% -10%, #0ea5e9 0%, transparent 40%),
+               radial-gradient(800px 600px at -10% 10%, #22c55e 0%, transparent 35%), var(--bg);
+      line-height: 1.6; 
+    }
+    a { color: var(--accent); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    header { position: sticky; top: 0; backdrop-filter: blur(8px); background: rgba(17,24,39,.6); border-bottom: 1px solid rgba(148,163,184,.15); z-index: 10; }
+    .nav { display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--accent)); display: grid; place-items: center; font-weight: 800; color: #0b1020; }
+    .brand span { font-weight: 700; }
+    .nav a { text-decoration: none; color: var(--text); opacity: .9; margin-left: 16px; }
+    .nav a:hover { opacity: 1; }
+
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; padding: 56px 0 24px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid rgba(148,163,184,.18); border-radius: var(--radius); box-shadow: 0 8px 28px rgba(0,0,0,.3); }
+    .hero .copy { padding: 28px; }
+    h1 { font-size: clamp(28px, 4vw, 48px); line-height: 1.1; margin: 0 0 14px; }
+    .lead { font-size: 18px; color: var(--muted); margin: 0 0 20px; }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; background: var(--brand); color: #05210f; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; text-decoration: none; }
+    .btn:hover { background: var(--brand-600); }
+    .btn.secondary { background: transparent; color: var(--text); border: 1px solid rgba(148,163,184,.35); }
+    .btn.secondary:hover { border-color: rgba(148,163,184,.7); }
+
+    .mock { padding: 18px; }
+    .screen { background: #0b1222; border: 1px solid rgba(148,163,184,.2); border-radius: 12px; overflow: hidden; }
+    .toolbar { display: flex; gap: 8px; padding: 10px; border-bottom: 1px solid rgba(148,163,184,.15); background: #0e162b; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #ef4444; }
+    .dot:nth-child(2){ background:#f59e0b }
+    .dot:nth-child(3){ background:#10b981 }
+    .table { width: 100%; border-collapse: collapse; }
+    .table th, .table td { padding: 12px 14px; border-bottom: 1px solid rgba(148,163,184,.1); text-align: left; }
+    .pill { display:inline-block; padding: 4px 10px; border-radius: 999px; background: rgba(34,197,94,.15); color: #86efac; font-size: 12px; font-weight: 700; }
+
+    .sections { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 28px 0 24px; }
+    .tile { padding: 18px; }
+    .tile h3 { margin: 8px 0 6px; }
+    .tile p { margin: 0; color: var(--muted); }
+
+    .how { padding: 24px; }
+    .how ol { display: grid; gap: 12px; margin: 0; padding-left: 20px; }
+    .how li { margin: 0 0 4px; }
+
+    .form { padding: 24px; display: grid; gap: 12px; }
+    .row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    label { font-weight: 600; }
+    input, select, textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(148,163,184,.25); background: #0b1222; color: var(--text); }
+    input:focus, select:focus, textarea:focus { outline: 2px solid var(--ring); border-color: var(--accent); }
+
+    .footer { padding: 28px; text-align: center; color: var(--muted); }
+
+    @media (max-width: 920px){ .hero { grid-template-columns: 1fr; } .sections { grid-template-columns: 1fr; } .row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#" aria-label="LocalLift Home">
+        <div class="logo" aria-hidden="true">LL</div>
+        <span>LocalLift</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#post">Post a job</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/your-username/your-repo" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card copy" role="region" aria-labelledby="tagline">
+        <h1 id="tagline">Jobs with dignity, right here at home</h1>
+        <p class="lead">LocalLift connects compassionate local businesses with people experiencing homelessness who are ready to work. We partner with shelters, workforce programs, and employers to create fair, flexible opportunities that lead to stability.</p>
+        <div class="cta">
+          <a class="btn" href="#post" role="button" aria-label="Post a job">Post a job</a>
+          <a class="btn secondary" href="#how" role="button">See how it works</a>
+        </div>
+      </div>
+
+      <div class="card mock" aria-hidden="true">
+        <div class="screen">
+          <div class="toolbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <table class="table" role="presentation">
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>Employer</th>
+                <th>Type</th>
+                <th>Support</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Prep Cook</td>
+                <td>Riverfront Café</td>
+                <td>Part‑time</td>
+                <td>Transportation stipend</td>
+                <td><span class="pill">Open</span></td>
+              </tr>
+              <tr>
+                <td>Warehouse Associate</td>
+                <td>City Goods Co‑op</td>
+                <td>Full‑time</td>
+                <td>On‑site supervisor</td>
+                <td><span class="pill">Open</span></td>
+              </tr>
+              <tr>
+                <td>Groundskeeper</td>
+                <td>Hope Park District</td>
+                <td>Seasonal</td>
+                <td>Paid training</td>
+                <td><span class="pill">Open</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="sections" aria-label="Audience">
+      <div class="card tile">
+        <h3>Employers</h3>
+        <p>Post roles with fair pay, flexible scheduling, and on‑the‑job support. We help you design inclusive job descriptions and onboarding.</p>
+      </div>
+      <div class="card tile">
+        <h3>Candidates</h3>
+        <p>Discover local opportunities with supportive employers. No lengthy forms—share your interests and availability first.</p>
+      </div>
+      <div class="card tile">
+        <h3>Community Partners</h3>
+        <p>Refer clients, coordinate transportation, and track outcomes with privacy‑first tools.</p>
+      </div>
+    </section>
+
+    <section id="how" class="card how" aria-labelledby="how-title">
+      <h2 id="how-title">How it works</h2>
+      <ol>
+        <li><strong>Post:</strong> Employers share role details—hours, pay, support offered (training, mentorship, transit).</li>
+        <li><strong>Match:</strong> Candidates (or partner orgs) set skills & availability. LocalLift suggests matches without biasing on address history.</li>
+        <li><strong>Start:</strong> We coordinate interviews, onboarding, and check‑ins for the first 90 days.</li>
+      </ol>
+    </section>
+
+    <section id="post" class="card form" aria-labelledby="post-title">
+      <h2 id="post-title">Post a job</h2>
+      <form name="job-post" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="job-post" />
+        <p hidden>
+          <label>Don’t fill this out: <input name="bot-field" /></label>
+        </p>
+        <div class="row">
+          <p>
+            <label>Company name<br />
+              <input name="company" required />
+            </label>
+          </p>
+          <p>
+            <label>Contact email<br />
+              <input name="email" type="email" required />
+            </label>
+          </p>
+        </div>
+        <div class="row">
+          <p>
+            <label>Role title<br />
+              <input name="title" required />
+            </label>
+          </p>
+          <p>
+            <label>Employment type<br />
+              <select name="type" required>
+                <option>Part‑time</option>
+                <option>Full‑time</option>
+                <option>Seasonal</option>
+                <option>Contract</option>
+              </select>
+            </label>
+          </p>
+        </div>
+        <p>
+          <label>Support offered (choose any that apply)<br />
+            <select name="supports" multiple size="4" aria-describedby="supports-help">
+              <option>Paid training</option>
+              <option>Transportation stipend</option>
+              <option>Mentorship</option>
+              <option>On‑site supervisor</option>
+            </select>
+          </label>
+          <small id="supports-help" style="color:var(--muted)">Hold Ctrl/⌘ to select multiple.</small>
+        </p>
+        <p>
+          <label>Job description<br />
+            <textarea name="description" rows="5" placeholder="Share responsibilities, schedule, pay range, and what support looks like." required></textarea>
+          </label>
+        </p>
+        <div class="cta">
+          <button class="btn" type="submit">Submit role</button>
+          <a class="btn secondary" href="mailto:hello@locallift.example">Questions? Email us</a>
+        </div>
+      </form>
+      <p style="color:var(--muted);font-size:.95rem;margin-top:8px">By posting, you agree to fair‑chance hiring and to comply with local wage and nondiscrimination laws.</p>
+    </section>
+
+    <section id="contact" class="card form" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <form name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contact" />
+        <div class="row">
+          <p><label>Your name<br /><input name="name" required></label></p>
+          <p><label>Email<br /><input name="email" type="email" required></label></p>
+        </div>
+        <p><label>Message<br /><textarea name="message" rows="4" required></textarea></label></p>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="yr"></span> LocalLift • Built for community impact • <a href="#" aria-label="View our accessibility statement" onclick="alert('We aim for WCAG 2.1 AA. If anything here isn\'t accessible, please email us.')">Accessibility</a></p>
+    </footer>
+  </main>
+
+  <script>
+    // Basic progressive enhancement: fake success message for static hosting
+    function handleSubmit(e){
+      e.preventDefault();
+      const form = e.target;
+      form.innerHTML = `<div class="card" style="padding:18px;">\n        <h3>Thanks! 🎉</h3>\n        <p>We received your submission and will follow up shortly.</p>\n        <a class="btn" href="#post">Post another job</a>\n      </div>`
+    }
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
